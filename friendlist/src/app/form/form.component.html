@@ -1,4 +1,4 @@
-{{ formName.value | json }}
+{{ friendModel | json }}
 <div id="form-container" class="m-3">
   <form #formName="ngForm" action="post">
     <div class="form-group">
@@ -8,6 +8,7 @@
         class="form-control"
         type="text"
         #firstName="ngModel"
+        [(ngModel)]="friendModel.firstName"
         ngModel
       />
     </div>
@@ -18,6 +19,7 @@
         class="form-control"
         type="text"
         #lastName="ngModel"
+        [(ngModel)]="friendModel.lastName"
         ngModel
       />
     </div>
@@ -28,6 +30,7 @@
         class="form-control"
         type="email"
         #email="ngModel"
+        [(ngModel)]="friendModel.email"
         ngModel
       />
     </div>
@@ -38,12 +41,18 @@
         class="form-control"
         type="tel"
         #phoneNumber="ngModel"
+        [(ngModel)]="friendModel.phoneNumber"
         ngModel
       />
     </div>
     <div class="form-group">
       <label for="favouriteLanguage">Favourite Language</label>
-      <select name="favouriteLanguage" #favouriteLanguage="ngModel" ngModel>
+      <select
+        name="favouriteLanguage"
+        #favouriteLanguage="ngModel"
+        [(ngModel)]="friendModel.favouriteLanguage"
+        ngModel
+      >
         <option value="{{ language }}" *ngFor="let language of languages">
           {{ language }}
         </option>

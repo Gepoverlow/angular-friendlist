@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Friend } from '../friend';
 
 @Component({
   selector: 'app-form-component',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
   languages: Array<string> = ['html', 'css', 'javascript', 'php'];
+  friendModel = new Friend('', '', '', '', '');
 
   constructor() {}
 
