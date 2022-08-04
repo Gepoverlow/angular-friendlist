@@ -10,6 +10,8 @@
         #firstName="ngModel"
         [(ngModel)]="friendModel.firstName"
         ngModel
+        required
+        [class.alert-danger]="firstName.invalid && firstName.touched"
       />
     </div>
     <div class="form-group">
@@ -21,6 +23,8 @@
         #lastName="ngModel"
         [(ngModel)]="friendModel.lastName"
         ngModel
+        required
+        [class.alert-danger]="lastName.invalid && lastName.touched"
       />
     </div>
     <div class="form-group">
@@ -32,6 +36,8 @@
         #email="ngModel"
         [(ngModel)]="friendModel.email"
         ngModel
+        required
+        [class.alert-danger]="email.invalid && email.touched"
       />
     </div>
     <div class="form-group">
@@ -43,6 +49,8 @@
         #phoneNumber="ngModel"
         [(ngModel)]="friendModel.phoneNumber"
         ngModel
+        required
+        [class.alert-danger]="phoneNumber.invalid && phoneNumber.touched"
       />
     </div>
     <div class="form-group">
@@ -52,6 +60,10 @@
         #favouriteLanguage="ngModel"
         [(ngModel)]="friendModel.favouriteLanguage"
         ngModel
+        required
+        [class.alert-danger]="
+          favouriteLanguage.invalid && favouriteLanguage.touched
+        "
       >
         <option value="{{ language }}" *ngFor="let language of languages">
           {{ language }}
