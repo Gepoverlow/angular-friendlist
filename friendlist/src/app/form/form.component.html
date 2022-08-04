@@ -1,25 +1,50 @@
+{{ formName.value | json }}
 <div id="form-container" class="m-3">
-  <form action="post">
+  <form #formName="ngForm" action="post">
     <div class="form-group">
-      <label for="first-name">First Name</label>
-      <input id="first-name" class="form-control" type="text" />
+      <label for="firstName">First Name</label>
+      <input
+        name="firstName"
+        class="form-control"
+        type="text"
+        #firstName="ngModel"
+        ngModel
+      />
     </div>
     <div class="form-group">
-      <label for="last-name">Last Name</label>
-      <input id="last-name" class="form-control" type="text" />
+      <label for="lastName">Last Name</label>
+      <input
+        name="lastName"
+        class="form-control"
+        type="text"
+        #lastName="ngModel"
+        ngModel
+      />
     </div>
     <div class="form-group">
       <label for="email">Email</label>
-      <input id="email" class="form-control" type="email" />
+      <input
+        name="email"
+        class="form-control"
+        type="email"
+        #email="ngModel"
+        ngModel
+      />
     </div>
     <div class="form-group">
-      <label for="phone-number">Phone Number</label>
-      <input id="phone-number" class="form-control" type="tel" />
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        name="phoneNumber"
+        class="form-control"
+        type="tel"
+        #phoneNumber="ngModel"
+        ngModel
+      />
     </div>
     <div class="form-group">
-      <label for="fav-language">Favourite Language</label>
-      <select name="" id="fav-language">
-        <option value="language" *ngFor="let language of languages">
+      <label for="favouriteLanguage">Favourite Language</label>
+      <select name="favouriteLanguage" #favouriteLanguage="ngModel" ngModel>
+        <option value="{{ language }}" *ngFor="let language of languages">
           {{ language }}
         </option>
       </select>
