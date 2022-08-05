@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Friend } from '../friend';
+import { Friend } from '../models/friend';
 
 @Component({
   selector: 'app-form-component',
