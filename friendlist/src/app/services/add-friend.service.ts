@@ -7,9 +7,10 @@ import { Friend } from '../models/friend';
 })
 export class AddFriendService {
   private _url: string = 'http://localhost:6969/';
+
   constructor(private http: HttpClient) {}
 
   addFriend(friend: Friend) {
-    return this.http.post(this._url, friend);
+    return this.http.post(this._url + 'allFriends', friend);
   }
 }
