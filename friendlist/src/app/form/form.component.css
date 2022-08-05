@@ -12,6 +12,15 @@
   gap: 0.3em;
 }
 
+#languageInput > span {
+  top: 60px;
+}
+
 .form-group {
-  margin: 0.5em 0 0.5em 0;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.form-group > span {
+  position: absolute;
 }
