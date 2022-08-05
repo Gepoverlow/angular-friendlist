@@ -1,4 +1,3 @@
-{{ friendModel | json }}
 <div id="form-container" class="m-3">
   <form #formName="ngForm" action="post" novalidate>
     <div class="form-group">
@@ -52,12 +51,12 @@
         ngModel
         required
         [class.redOutline]="email.invalid && email.touched"
-        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+        [email]="true"
       />
       <span class="emptySpan" *ngIf="email.errors?.['required']"
         >This field can not be empty</span
       >
-      <span class="alert-danger" *ngIf="email.errors?.['pattern']"
+      <span class="alert-danger" *ngIf="email.errors?.['email']"
         >Please enter a valid email</span
       >
     </div>
