@@ -15,7 +15,7 @@ app.all("/*", function (req, res, next) {
 });
 
 let allFriends = [
-  { fName: "Coach", lName: "Tim", email: "tim.broos@becode.org", phone: "0469420666", signatureMove: "Yeet", language: "Javascript" },
+  { _firstName: "Coach", _lastName: "Tim", _email: "tim.broos@becode.org", _phoneNumber: "0469420666", _favouriteLanguage: "Javascript" },
 ];
 
 // Below you can define how your API handles a get or a post request.
