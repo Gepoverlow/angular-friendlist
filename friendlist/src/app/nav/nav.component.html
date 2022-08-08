@@ -1,0 +1,25 @@
+<!-- <app-form-component></app-form-component> -->
+<h1>Angular Router App</h1>
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav>
+  <ul>
+    <li>
+      <a
+        routerLink="/form"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >Add a new Friend</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/friends"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        >See all Friends</a
+      >
+    </li>
+  </ul>
+</nav>
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
