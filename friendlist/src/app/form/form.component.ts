@@ -10,10 +10,13 @@ import { AddFriendService } from '../services/add-friend.service';
 export class FormComponent implements OnInit {
   languages: Array<string> = ['html', 'css', 'javascript', 'php'];
   friendModel = new Friend('', '', '', '', '');
-  allFriends: any;
   allFriendsUrl: string = 'http://localhost:6969/allFriends';
 
-  constructor(private addFriendService: AddFriendService) {}
+  protected _allFriends: Array<Object>;
+
+  constructor(private addFriendService: AddFriendService) {
+    this._allFriends = new Array<Object>();
+  }
 
   ngOnInit(): void {
     this.getFriends(this.allFriendsUrl);
@@ -21,7 +24,6 @@ export class FormComponent implements OnInit {
 
   submitForm() {
     const observable = this.addFriendService.addFriend(this.friendModel);
-    console.log(observable);
 
     observable.subscribe({
       next: (data) => {
@@ -43,10 +45,12 @@ export class FormComponent implements OnInit {
           'Content-Type': 'application/json',
         },
       });
-      this.allFriends = await data.json();
-      console.log(this.allFriends);
+      this._allFriends = await data.json();
     } catch (err) {
       console.log('An error has ocurred: ' + err);
     }
+  }
+  get allFriends(): Array<Object> {
+    return this._allFriends;
   }
 }
