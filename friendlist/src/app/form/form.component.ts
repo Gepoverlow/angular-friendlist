@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Friend } from '../models/friend';
 import { AddFriendService } from '../services/add-friend.service';
+import { GetFriendsService } from '../services/get-friends.service';
 
 @Component({
   selector: 'app-form-component',
@@ -10,16 +11,18 @@ import { AddFriendService } from '../services/add-friend.service';
 export class FormComponent implements OnInit {
   languages: Array<string> = ['html', 'css', 'javascript', 'php'];
   friendModel = new Friend('', '', '', '', '');
-  allFriendsUrl: string = 'http://localhost:6969/allFriends';
 
   protected _allFriends: Array<Object>;
 
-  constructor(private addFriendService: AddFriendService) {
+  constructor(
+    private addFriendService: AddFriendService,
+    private getFriendsService: GetFriendsService
+  ) {
     this._allFriends = new Array<Object>();
   }
 
   ngOnInit(): void {
-    this.getFriends(this.allFriendsUrl);
+    this.getFriendsService.getFriends();
   }
 
   submitForm() {
@@ -29,7 +32,10 @@ export class FormComponent implements OnInit {
       next: (data) => {
         console.log(data);
         console.log('success!');
-        this.getFriends(this.allFriendsUrl);
+        this.getFriendsService.getFriends();
+        this.getFriendsService.getFriends().then((result) => {
+          console.log(result);
+        });
       },
       error: (error) => {
         console.log(error);
@@ -37,19 +43,7 @@ export class FormComponent implements OnInit {
       },
     });
   }
-  public async getFriends(url: string): Promise<any> {
-    try {
-      const data = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      this._allFriends = await data.json();
-    } catch (err) {
-      console.log('An error has ocurred: ' + err);
-    }
-  }
+
   get allFriends(): Array<Object> {
     return this._allFriends;
   }
