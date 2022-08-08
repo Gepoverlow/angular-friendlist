@@ -34,6 +34,7 @@ app.post("/", function (request, response) {
 });
 
 app.post("/allFriends", (req, res) => {
+  res.status(200).send({ message: "Friend added" });
   allFriends.push(req.body);
 });
 
