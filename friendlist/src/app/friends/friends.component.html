@@ -1,1 +1,13 @@
-<h1>Friends component template here</h1>
+<h1>Current friends</h1>
+
+<div class="card-columns" id="friends-container">
+  <div class="card" style="width: 18rem" *ngFor="let friend of allFriends">
+    <div class="card-body">
+      <h5 class="card-title">{{ friend._firstName }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ friend._lastName }}</h6>
+      <p class="card-text">{{ friend._email }}</p>
+      <p class="card-text">{{ friend._phoneNumber }}</p>
+      <p class="card-text">{{ friend._favouriteLanguage }}</p>
+    </div>
+  </div>
+</div>

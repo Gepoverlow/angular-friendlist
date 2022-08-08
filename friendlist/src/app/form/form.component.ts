@@ -12,18 +12,9 @@ export class FormComponent implements OnInit {
   languages: Array<string> = ['html', 'css', 'javascript', 'php'];
   friendModel = new Friend('', '', '', '', '');
 
-  protected _allFriends: Array<Object>;
+  constructor(private addFriendService: AddFriendService) {}
 
-  constructor(
-    private addFriendService: AddFriendService,
-    private getFriendsService: GetFriendsService
-  ) {
-    this._allFriends = new Array<Object>();
-  }
-
-  ngOnInit(): void {
-    this.getFriendsService.getFriends();
-  }
+  ngOnInit(): void {}
 
   submitForm() {
     const observable = this.addFriendService.addFriend(this.friendModel);
@@ -32,19 +23,11 @@ export class FormComponent implements OnInit {
       next: (data) => {
         console.log(data);
         console.log('success!');
-        this.getFriendsService.getFriends();
-        this.getFriendsService.getFriends().then((result) => {
-          console.log(result);
-        });
       },
       error: (error) => {
         console.log(error);
         console.log('failed');
       },
     });
-  }
-
-  get allFriends(): Array<Object> {
-    return this._allFriends;
   }
 }

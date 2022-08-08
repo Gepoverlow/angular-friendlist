@@ -7,11 +7,23 @@ import { GetFriendsService } from '../services/get-friends.service';
   styleUrls: ['./friends.component.css'],
 })
 export class FriendsComponent implements OnInit {
-  constructor(private getFriendsService: GetFriendsService) {}
+  private _allFriends: Array<Object>;
+  constructor(private getFriendsService: GetFriendsService) {
+    this._allFriends = new Array<any>();
+  }
 
   ngOnInit(): void {
-    this.getFriendsService.getFriends().then((result) => {
-      console.log(result);
+    this.fetchFriends();
+  }
+
+  private fetchFriends(): void {
+    this.getFriendsService.getFriends().then((friends) => {
+      this._allFriends = friends;
+      console.log(this._allFriends);
     });
+  }
+
+  get allFriends(): Array<any> {
+    return this._allFriends;
   }
 }
